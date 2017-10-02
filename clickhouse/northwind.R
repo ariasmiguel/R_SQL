@@ -60,7 +60,7 @@ highchart() %>%
   hc_title(text = "Sales Per Week By Company") %>%
   hc_xAxis(categories = agencias[, time]) %>%
   hc_add_series(data = agencias[, Sales],
-                name = "Total Sales")
+                name = "Total? Sales")
 
 agencias[order(-Sales)]
 
@@ -70,3 +70,14 @@ treemap(agencias[1:100, ],
         palette=c("#FFFFFF","#FFFFFF","#FF0000"),
         type="value", title.legend="Biggest Orders",
         title="Top Sales")
+
+hchart(agencias[1:100], "treemap", hcaes(x = CustomerID, value = Sales,
+                                  color = N))
+
+# Canals 
+str(info)
+ship <- copy(info)
+shippy <- ship[, .N, by = .(Shipper, year(OrderDate))][order(year)]
+
+hchart(shippy, "treemap", hcaes(x = Shipper, value = N,
+       color = year))
