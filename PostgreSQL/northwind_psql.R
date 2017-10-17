@@ -11,7 +11,7 @@ options(stringsAsFactors=FALSE)
 # system("psql -U ma -d northwind -f ./northwind.postgre.sql")
 
 # Connect to DataBase ---------------------------------------------
-# pw <- {
+pw <- {
   "welcome1"
 }
 
